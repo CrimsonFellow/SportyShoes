@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin Dashboard</title>
+    <style>
+        /* Existing CSS styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+        nav ul li {
+            display: inline-block;
+            margin: 0 10px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        nav ul li a:hover {
+            background-color: #0056b3;
+        }
+        
+        /* New CSS for the form */
+        form {
+            margin-top: 30px;
+            text-align: center;
+        }
+        form input[type="password"] {
+            padding: 10px;
+            margin: 5px;
+            width: 250px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        form button[type="submit"] {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        form button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Admin Dashboard</h1>
+    <nav>
+        <ul>
+            <li><a th:href="@{/admin/products}">Manage Products</a></li>
+            <li><a th:href="@{/admin/users}">View Users</a></li>
+            <li><a th:href="@{/admin/reports}">View Reports</a></li>
+        </ul>
+    </nav>
+
+    <!-- Password Change Form -->
+    <form th:action="@{/admin/changePassword}" method="post">
+        <input type="password" name="currentPassword" placeholder="Current Password" required>
+        <input type="password" name="newPassword" placeholder="New Password" required>
+        <button type="submit">Change Password</button>
+    </form>
+</body>
+</html>
+
+

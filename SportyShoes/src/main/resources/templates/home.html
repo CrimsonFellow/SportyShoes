@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sporty Shoes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+        }
+        nav {
+            text-align: center;
+            margin-top: 20px;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            padding: 10px 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        nav ul li a:hover {
+            background-color: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Sporty Shoes!</h1>
+    <nav>
+        <ul>
+            <li><a th:href="@{/admin/login}">Admin Login</a></li>
+        </ul>
+    </nav>
+</body>
+</html>
+
+
+

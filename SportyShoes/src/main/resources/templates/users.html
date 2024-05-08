@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+        }
+        th {
+            background-color: #007bff;
+            color: #fff;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #ddd;
+        }
+        a {
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            color: #fff;
+        }
+        .edit {
+            background-color: #28a745;
+        }
+        .delete {
+            background-color: #dc3545;
+        }
+        .button {
+            display: block;
+            text-align: center;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            margin: 20px auto;
+            width: 150px;
+            border-radius: 5px;
+        }
+        form {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        input[type="text"], input[type="email"], button[type="submit"] {
+            padding: 10px;
+            margin-right: 10px;
+            border-radius: 3px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>User Management</h1>
+
+    <!-- Search Form -->
+    <form th:action="@{/admin/users}" method="get">
+	    <input type="text" name="search" placeholder="Search users..." />
+	    <button type="submit">Search</button>
+	</form>
+
+    <!-- User List Display -->
+    <table>
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Actions</th> 
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.username}"></td>
+                <td th:text="${user.email}"></td>
+                <td>
+                    <!-- Optional action links -->
+                    <a th:href="@{/admin/users/edit/{id}(id=${user.id})}" class="edit">Edit</a>
+                    <a th:href="@{/admin/users/delete/{id}(id=${user.id})}" class="delete">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/admin/dashboard}" class="button">Back to Dashboard</a>
+</body>
+</html>

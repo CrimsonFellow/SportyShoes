@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit User</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+        }
+        form {
+            width: 50%;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        input[type="text"], input[type="email"], button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 3px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        button[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        a {
+            display: block;
+            width: 50%;
+            margin: 0 auto;
+            text-align: center;
+            margin-top: 10px;
+            text-decoration: none;
+            color: #007bff;
+        }
+        a:hover {
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Edit User</h1>
+    <form th:action="@{/admin/users/edit/{id}(id=${user.id})}" th:object="${user}" method="post">
+        <input type="text" th:field="*{username}" placeholder="Username"/>
+        <input type="email" th:field="*{email}" placeholder="Email"/>
+        <button type="submit">Update User</button>
+    </form>
+    <a th:href="@{/admin/users}">Cancel</a>
+</body>
+</html>
+
